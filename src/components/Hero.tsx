@@ -1,9 +1,21 @@
 
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 
 export const Hero = () => {
   const scrollToAbout = () => {
     document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // Secure contact methods to prevent spam
+  const handleEmailClick = () => {
+    const user = 'hello';
+    const domain = 'serhandemirel.com';
+    window.location.href = `mailto:${user}@${domain}`;
+  };
+
+  const handleTelegramClick = () => {
+    // Replace 'yourusername' with your actual Telegram username
+    window.open('https://t.me/yourusername', '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -25,28 +37,47 @@ export const Hero = () => {
         </div>
         
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in">
-          John <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Doe</span>
+          Serhan <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Demirel</span>
         </h1>
         
         <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in animation-delay-300">
-          Full Stack Developer & UI/UX Designer
+          Digital Marketing Expert & Full Stack Developer
         </p>
         
         <p className="text-lg text-gray-400 mb-10 max-w-2xl mx-auto animate-fade-in animation-delay-500">
-          Passionate about creating beautiful, functional web experiences that make a difference. 
-          I blend creativity with technology to build amazing digital solutions.
+          Specializing in digital marketing, web development, and business automation. 
+          I help businesses grow through strategic marketing and cutting-edge technology solutions.
         </p>
 
         <div className="flex justify-center space-x-6 mb-12 animate-fade-in animation-delay-700">
-          <a href="https://github.com" className="text-white hover:text-purple-300 transition-colors duration-300 hover:scale-110 transform">
+          <button 
+            onClick={() => window.open('https://github.com/yourusername', '_blank', 'noopener,noreferrer')}
+            className="text-white hover:text-purple-300 transition-colors duration-300 hover:scale-110 transform"
+            aria-label="GitHub Profile"
+          >
             <Github size={28} />
-          </a>
-          <a href="https://linkedin.com" className="text-white hover:text-purple-300 transition-colors duration-300 hover:scale-110 transform">
+          </button>
+          <button 
+            onClick={() => window.open('https://linkedin.com/in/yourusername', '_blank', 'noopener,noreferrer')}
+            className="text-white hover:text-purple-300 transition-colors duration-300 hover:scale-110 transform"
+            aria-label="LinkedIn Profile"
+          >
             <Linkedin size={28} />
-          </a>
-          <a href="mailto:hello@example.com" className="text-white hover:text-purple-300 transition-colors duration-300 hover:scale-110 transform">
+          </button>
+          <button 
+            onClick={handleTelegramClick}
+            className="text-white hover:text-purple-300 transition-colors duration-300 hover:scale-110 transform"
+            aria-label="Telegram Contact"
+          >
+            <MessageCircle size={28} />
+          </button>
+          <button 
+            onClick={handleEmailClick}
+            className="text-white hover:text-purple-300 transition-colors duration-300 hover:scale-110 transform"
+            aria-label="Email Contact"
+          >
             <Mail size={28} />
-          </a>
+          </button>
         </div>
 
         <button

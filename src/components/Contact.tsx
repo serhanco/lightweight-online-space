@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export const Contact = () => {
@@ -28,6 +28,17 @@ export const Contact = () => {
     });
   };
 
+  // Secure contact methods
+  const handleEmailClick = () => {
+    const user = 'hello';
+    const domain = 'serhandemirel.com';
+    window.location.href = `mailto:${user}@${domain}`;
+  };
+
+  const handleTelegramClick = () => {
+    window.open('https://t.me/yourusername', '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <section id="contact" className="py-20 px-4 bg-black/20">
       <div className="max-w-6xl mx-auto">
@@ -36,31 +47,37 @@ export const Contact = () => {
             Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Touch</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Let's work together to bring your ideas to life
+            Let's discuss how I can help grow your business through strategic marketing and technology
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
           <div className="space-y-8">
-            <div className="flex items-center space-x-4">
+            <button 
+              onClick={handleEmailClick}
+              className="flex items-center space-x-4 w-full text-left hover:transform hover:scale-105 transition-all duration-200"
+            >
               <div className="bg-purple-500 p-3 rounded-full">
                 <Mail className="text-white" size={24} />
               </div>
               <div>
                 <h3 className="text-white font-semibold">Email</h3>
-                <p className="text-gray-300">hello@johndoe.com</p>
+                <p className="text-gray-300">Click to send email</p>
               </div>
-            </div>
+            </button>
 
-            <div className="flex items-center space-x-4">
-              <div className="bg-pink-500 p-3 rounded-full">
-                <Phone className="text-white" size={24} />
+            <button 
+              onClick={handleTelegramClick}
+              className="flex items-center space-x-4 w-full text-left hover:transform hover:scale-105 transition-all duration-200"
+            >
+              <div className="bg-blue-500 p-3 rounded-full">
+                <MessageCircle className="text-white" size={24} />
               </div>
               <div>
-                <h3 className="text-white font-semibold">Phone</h3>
-                <p className="text-gray-300">+1 (555) 123-4567</p>
+                <h3 className="text-white font-semibold">Telegram</h3>
+                <p className="text-gray-300">Quick messaging</p>
               </div>
-            </div>
+            </button>
 
             <div className="flex items-center space-x-4">
               <div className="bg-yellow-500 p-3 rounded-full">
@@ -68,7 +85,7 @@ export const Contact = () => {
               </div>
               <div>
                 <h3 className="text-white font-semibold">Location</h3>
-                <p className="text-gray-300">San Francisco, CA</p>
+                <p className="text-gray-300">Available Worldwide</p>
               </div>
             </div>
           </div>

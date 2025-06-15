@@ -2,30 +2,59 @@
 export const Skills = () => {
   const skillCategories = [
     {
-      title: "Frontend",
+      title: "Digital Marketing",
+      icon: "🎯",
       skills: [
-        { name: "React", level: 95 },
-        { name: "TypeScript", level: 90 },
-        { name: "Next.js", level: 85 },
-        { name: "Tailwind CSS", level: 92 },
+        "SEO Optimization",
+        "Google Ads",
+        "UX Design",
+        "User Journey Design",
+        "Funnel Design",
+        "Lead Generation",
+        "Conversion Optimization",
+        "Analytics & Reporting"
       ]
     },
     {
-      title: "Backend",
+      title: "Development",
+      icon: "💻",
       skills: [
-        { name: "Node.js", level: 88 },
-        { name: "Python", level: 80 },
-        { name: "PostgreSQL", level: 85 },
-        { name: "MongoDB", level: 82 },
+        "Website Development",
+        "Frontend Development",
+        "Backend Development",
+        "Database Design",
+        "API Development",
+        "Responsive Design",
+        "Performance Optimization",
+        "E-commerce Solutions"
       ]
     },
     {
-      title: "Tools & Others",
+      title: "Integration & Automation",
+      icon: "🔗",
       skills: [
-        { name: "Git", level: 93 },
-        { name: "Docker", level: 78 },
-        { name: "AWS", level: 75 },
-        { name: "Figma", level: 87 },
+        "Platform Integrations",
+        "CRM Systems",
+        "Business Automation",
+        "Workflow Design",
+        "API Integrations",
+        "Data Migration",
+        "Third-party Connectors",
+        "Process Optimization"
+      ]
+    },
+    {
+      title: "AI & Innovation",
+      icon: "🤖",
+      skills: [
+        "AI Generation",
+        "AI Integration",
+        "Machine Learning",
+        "Automation Tools",
+        "ChatBot Development",
+        "Data Analysis",
+        "Predictive Analytics",
+        "Process Intelligence"
       ]
     }
   ];
@@ -35,30 +64,28 @@ export const Skills = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Skills</span>
+            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Expertise</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Here are the technologies and tools I work with to bring ideas to life
+            Comprehensive skills across digital marketing, development, and business automation
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
           {skillCategories.map((category, index) => (
-            <div key={index} className="bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all duration-300">
-              <h3 className="text-2xl font-bold text-white mb-6 text-center">{category.title}</h3>
-              <div className="space-y-4">
+            <div key={index} className="bg-white/5 backdrop-blur-sm rounded-xl p-8 hover:bg-white/10 transition-all duration-300 hover:transform hover:scale-105">
+              <div className="flex items-center mb-6">
+                <span className="text-4xl mr-4">{category.icon}</span>
+                <h3 className="text-2xl font-bold text-white">{category.title}</h3>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-3">
                 {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-gray-300 font-medium">{skill.name}</span>
-                      <span className="text-purple-400">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-gray-700 rounded-full h-2">
-                      <div 
-                        className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
+                  <div 
+                    key={skillIndex}
+                    className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-lg px-3 py-2 text-center hover:from-purple-500/20 hover:to-pink-500/20 transition-all duration-200"
+                  >
+                    <span className="text-gray-300 text-sm font-medium">{skill}</span>
                   </div>
                 ))}
               </div>
