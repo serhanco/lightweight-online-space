@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon, Globe } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -79,21 +80,21 @@ export const Navigation = () => {
   const currentLang = languages.find(lang => lang.code === language) || languages[0];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-black/20 backdrop-blur-md" : "bg-transparent"}`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-black/20 dark:bg-black/20 bg-white/90 backdrop-blur-md" : "bg-transparent"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <button
             onClick={scrollToTop}
             className="hover:opacity-80 transition-opacity duration-200"
           >
-            <span className="text-white font-bold text-lg">Serhan Demirel</span>
+            <span className="text-white dark:text-white text-gray-900 font-bold text-lg">Serhan Demirel</span>
           </button>
           <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
-                className="text-white hover:text-purple-300 transition-colors duration-200"
+                className="text-white dark:text-white text-gray-900 hover:text-purple-300 dark:hover:text-purple-300 hover:text-purple-600 transition-colors duration-200"
               >
                 {item.label}
               </button>
@@ -101,7 +102,7 @@ export const Navigation = () => {
           </div>
           <div className="flex items-center space-x-4">
             <Select value={language} onValueChange={setLanguage}>
-              <SelectTrigger className="w-auto bg-transparent border-white/20 text-white hover:bg-white/10">
+              <SelectTrigger className="w-auto bg-transparent border-white/20 dark:border-white/20 border-gray-400/30 text-white dark:text-white text-gray-900 hover:bg-white/10 dark:hover:bg-white/10 hover:bg-gray-100/50">
                 <SelectValue>
                   <div className="flex items-center space-x-2">
                     <Globe size={16} />
@@ -126,7 +127,7 @@ export const Navigation = () => {
                 ${
                   isDarkMode
                     ? "bg-black/80 border-white/20 text-yellow-400 hover:bg-black/70"
-                    : "bg-white border-black/10 text-purple-700 hover:bg-white/80"
+                    : "bg-white border-gray-300 text-purple-700 hover:bg-gray-100"
                 }
               `}
               aria-label="Toggle theme"
@@ -139,19 +140,19 @@ export const Navigation = () => {
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden text-white"
+              className="md:hidden text-white dark:text-white text-gray-900"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
         {isOpen && (
-          <div className="md:hidden bg-black/90 backdrop-blur-md rounded-lg mt-2 p-4">
+          <div className="md:hidden bg-black/90 dark:bg-black/90 bg-white/95 backdrop-blur-md rounded-lg mt-2 p-4">
             {navItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left py-2 text-white hover:text-purple-300 transition-colors duration-200"
+                className="block w-full text-left py-2 text-white dark:text-white text-gray-900 hover:text-purple-300 dark:hover:text-purple-300 hover:text-purple-600 transition-colors duration-200"
               >
                 {item.label}
               </button>
