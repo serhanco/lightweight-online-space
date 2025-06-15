@@ -33,9 +33,9 @@ export const Hero = () => {
       <div className="text-center z-10 max-w-4xl mx-auto">
         <div className="mb-8">
           <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
-            alt="Profile"
-            className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-white/20 shadow-2xl animate-fade-in"
+            src="https://serhandemirel.com/img/SD-logo-75px-white-transparent.webp"
+            alt="Serhan Demirel Logo"
+            className="w-32 h-32 mx-auto mb-6 animate-fade-in"
           />
         </div>
         
