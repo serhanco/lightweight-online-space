@@ -42,9 +42,13 @@ export const Navigation = () => {
         <div className="flex justify-between items-center py-4">
           <button
             onClick={scrollToTop}
-            className="text-2xl font-bold text-white hover:text-purple-300 transition-colors duration-200"
+            className="hover:opacity-80 transition-opacity duration-200"
           >
-            Serhan Demirel
+            <img 
+              src="https://serhandemirel.com/img/SD-logo-75px-white-transparent.webp" 
+              alt="Serhan Demirel Logo" 
+              className="h-12 w-auto"
+            />
           </button>
           
           {/* Desktop Menu */}
