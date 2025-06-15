@@ -1,4 +1,5 @@
 
+
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -44,11 +45,7 @@ export const Navigation = () => {
             onClick={scrollToTop}
             className="hover:opacity-80 transition-opacity duration-200"
           >
-            <img 
-              src="https://serhandemirel.com/img/SD-logo-75px-white-transparent.webp" 
-              alt="Serhan Demirel Logo" 
-              className="h-12 w-auto"
-            />
+            <span className="text-white font-bold text-lg">Serhan Demirel</span>
           </button>
           
           {/* Desktop Menu */}
@@ -91,3 +88,4 @@ export const Navigation = () => {
     </nav>
   );
 };
+
