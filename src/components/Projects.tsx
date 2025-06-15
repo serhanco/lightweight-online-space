@@ -33,29 +33,29 @@ export const Projects = () => {
     <section id="projects" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white dark:text-white text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Projects</span>
           </h2>
-          <p className="text-xl text-gray-300 dark:text-gray-300 text-gray-700 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             A showcase of my recent work and personal projects
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div key={index} className="bg-white/5 dark:bg-white/5 bg-gray-100/80 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 dark:hover:bg-white/10 hover:bg-gray-200/80 transition-all duration-300 transform hover:scale-105">
+            <div key={index} className="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 transform hover:scale-105">
               <img 
                 src={project.image} 
                 alt={project.title}
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white dark:text-white text-gray-900 mb-3">{project.title}</h3>
-                <p className="text-gray-300 dark:text-gray-300 text-gray-700 mb-4 text-sm leading-relaxed">{project.description}</p>
+                <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
+                <p className="text-gray-300 mb-4 text-sm leading-relaxed">{project.description}</p>
                 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIndex) => (
-                    <span key={techIndex} className="px-3 py-1 bg-purple-500/20 text-purple-300 dark:text-purple-300 text-purple-700 rounded-full text-xs">
+                    <span key={techIndex} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs">
                       {tech}
                     </span>
                   ))}
@@ -64,14 +64,14 @@ export const Projects = () => {
                 <div className="flex space-x-4">
                   <a 
                     href={project.liveUrl}
-                    className="flex items-center text-white dark:text-white text-gray-900 hover:text-purple-300 dark:hover:text-purple-300 hover:text-purple-600 transition-colors duration-200"
+                    className="flex items-center text-white hover:text-purple-300 transition-colors duration-200"
                   >
                     <ExternalLink size={16} className="mr-1" />
                     Live Demo
                   </a>
                   <a 
                     href={project.githubUrl}
-                    className="flex items-center text-white dark:text-white text-gray-900 hover:text-purple-300 dark:hover:text-purple-300 hover:text-purple-600 transition-colors duration-200"
+                    className="flex items-center text-white hover:text-purple-300 transition-colors duration-200"
                   >
                     <Github size={16} className="mr-1" />
                     Code

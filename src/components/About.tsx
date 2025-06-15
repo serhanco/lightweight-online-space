@@ -31,7 +31,7 @@ const translations = {
   },
   fr: {
     title: "À propos de moi",
-    desc: "Expert en marketing digital et développeur full stack, j'aide les entreprises à croître grâce à la stratégie et à la technologie.",
+    desc: "Expert en marketing digital et développeur full stack, j’aide les entreprises à croître grâce à la stratégie et à la technologie.",
     p1: "Mon expertise couvre le marketing digital, le développement web et l'automatisation d'entreprise. Je crée des solutions globales pour relier vos objectifs marketing et la technique.",
     p2: "Du SEO et des campagnes Google Ads aux applications web sur mesure et intégrations CRM, j'optimise vos opérations et votre présence digitale.",
     dm: "Marketing Digital",
@@ -40,13 +40,13 @@ const translations = {
     dm_short: "SEO, Google Ads, UX & conception de tunnels",
     dev_short: "Développement web full stack & intégrations",
     auto_short: "Flux de travail & solutions CRM",
-    exp: "Ans d'Expérience"
+    exp: "Ans d’Expérience"
   },
   it: {
     title: "Chi Sono",
-    desc: "Sono un esperto di marketing digitale e sviluppatore full stack, con esperienza nell'aiutare le aziende a crescere con strategie e soluzioni tecnologiche.",
-    p1: "La mia esperienza abbraccia strategie di marketing digitale, sviluppo web e automazione aziendale. Creo soluzioni complete che collegano gli obiettivi di marketing all'implementazione tecnica.",
-    p2: "Dall'ottimizzazione SEO alle campagne Google Ads, dalle web app personalizzate alle integrazioni CRM, aiuto le aziende a ottimizzare le operazioni e la presenza digitale.",
+    desc: "Sono un esperto di marketing digitale e sviluppatore full stack, con esperienza nell’aiutare le aziende a crescere con strategie e soluzioni tecnologiche.",
+    p1: "La mia esperienza abbraccia strategie di marketing digitale, sviluppo web e automazione aziendale. Creo soluzioni complete che collegano gli obiettivi di marketing all’implementazione tecnica.",
+    p2: "Dall’ottimizzazione SEO alle campagne Google Ads, dalle web app personalizzate alle integrazioni CRM, aiuto le aziende a ottimizzare le operazioni e la presenza digitale.",
     dm: "Marketing Digitale",
     dev: "Sviluppo",
     auto: "Automazione",
@@ -78,38 +78,38 @@ export const About = () => {
     <section id="about" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white dark:text-white text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             {t.title.split(" ")[0]} <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">{t.title.split(" ").slice(1).join(" ")}</span>
           </h2>
-          <p className="text-xl text-gray-300 dark:text-gray-300 text-gray-700 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             {t.desc}
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <p className="text-gray-300 dark:text-gray-300 text-gray-700 text-lg leading-relaxed">
+            <p className="text-gray-300 text-lg leading-relaxed">
               {t.p1}
             </p>
-            <p className="text-gray-300 dark:text-gray-300 text-gray-700 text-lg leading-relaxed">
+            <p className="text-gray-300 text-lg leading-relaxed">
               {t.p2}
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12">
-              <div className="bg-white/5 dark:bg-white/5 bg-gray-100/80 backdrop-blur-sm rounded-xl p-6 text-center hover:bg-white/10 dark:hover:bg-white/10 hover:bg-gray-200/80 transition-all duration-300">
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 text-center hover:bg-white/10 transition-all duration-300">
                 <Palette className="mx-auto mb-4 text-purple-400" size={32} />
-                <h3 className="text-white dark:text-white text-gray-900 font-semibold mb-2">{t.dm}</h3>
-                <p className="text-gray-400 dark:text-gray-400 text-gray-600 text-sm">{t.dm_short}</p>
+                <h3 className="text-white font-semibold mb-2">{t.dm}</h3>
+                <p className="text-gray-400 text-sm">{t.dm_short}</p>
               </div>
-              <div className="bg-white/5 dark:bg-white/5 bg-gray-100/80 backdrop-blur-sm rounded-xl p-6 text-center hover:bg-white/10 dark:hover:bg-white/10 hover:bg-gray-200/80 transition-all duration-300">
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 text-center hover:bg-white/10 transition-all duration-300">
                 <Code className="mx-auto mb-4 text-pink-400" size={32} />
-                <h3 className="text-white dark:text-white text-gray-900 font-semibold mb-2">{t.dev}</h3>
-                <p className="text-gray-400 dark:text-gray-400 text-gray-600 text-sm">{t.dev_short}</p>
+                <h3 className="text-white font-semibold mb-2">{t.dev}</h3>
+                <p className="text-gray-400 text-sm">{t.dev_short}</p>
               </div>
-              <div className="bg-white/5 dark:bg-white/5 bg-gray-100/80 backdrop-blur-sm rounded-xl p-6 text-center hover:bg-white/10 dark:hover:bg-white/10 hover:bg-gray-200/80 transition-all duration-300">
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 text-center hover:bg-white/10 transition-all duration-300">
                 <Zap className="mx-auto mb-4 text-yellow-400" size={32} />
-                <h3 className="text-white dark:text-white text-gray-900 font-semibold mb-2">{t.auto}</h3>
-                <p className="text-gray-400 dark:text-gray-400 text-gray-600 text-sm">{t.auto_short}</p>
+                <h3 className="text-white font-semibold mb-2">{t.auto}</h3>
+                <p className="text-gray-400 text-sm">{t.auto_short}</p>
               </div>
             </div>
           </div>
