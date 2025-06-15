@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon, Globe } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useLanguage } from "./LanguageProvider";
 
 type Language = {
   code: string;
@@ -15,15 +16,14 @@ const languages: Language[] = [
   { code: 'fr', name: 'Français', flag: '🇫🇷' },
   { code: 'it', name: 'Italiano', flag: '🇮🇹' },
   { code: 'nl', name: 'Nederlands', flag: '🇳🇱' },
-  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
-  { code: 'ar', name: 'العربية', flag: '🇸🇦' },
 ];
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState('en');
+
+  const { language, setLanguage } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,11 +33,9 @@ export const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Initialize dark mode from localStorage or system preference
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
     if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
       setIsDarkMode(true);
       document.documentElement.classList.add('dark');
@@ -50,7 +48,6 @@ export const Navigation = () => {
   const toggleTheme = () => {
     const newTheme = !isDarkMode;
     setIsDarkMode(newTheme);
-    
     if (newTheme) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
@@ -58,12 +55,6 @@ export const Navigation = () => {
       document.documentElement.classList.remove('dark');
       localStorage.setItem('theme', 'light');
     }
-  };
-
-  const handleLanguageChange = (languageCode: string) => {
-    setCurrentLanguage(languageCode);
-    localStorage.setItem('language', languageCode);
-    console.log(`Language changed to: ${languageCode}`);
   };
 
   const navItems = [
@@ -86,12 +77,10 @@ export const Navigation = () => {
     setIsOpen(false);
   };
 
-  const currentLang = languages.find(lang => lang.code === currentLanguage) || languages[0];
+  const currentLang = languages.find(lang => lang.code === language) || languages[0];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? "bg-black/20 backdrop-blur-md" : "bg-transparent"
-    }`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-black/20 backdrop-blur-md" : "bg-transparent"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <button
@@ -100,7 +89,6 @@ export const Navigation = () => {
           >
             <span className="text-white font-bold text-lg">Serhan Demirel</span>
           </button>
-          
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
@@ -113,11 +101,10 @@ export const Navigation = () => {
               </button>
             ))}
           </div>
-
-          {/* Right side controls */}
+          {/* Header controls */}
           <div className="flex items-center space-x-4">
-            {/* Language Switcher - Available on all devices */}
-            <Select value={currentLanguage} onValueChange={handleLanguageChange}>
+            {/* Language Switcher */}
+            <Select value={language} onValueChange={setLanguage}>
               <SelectTrigger className="w-auto bg-transparent border-white/20 text-white hover:bg-white/10">
                 <SelectValue>
                   <div className="flex items-center space-x-2">
@@ -137,8 +124,7 @@ export const Navigation = () => {
                 ))}
               </SelectContent>
             </Select>
-
-            {/* Dark/Light Mode Switcher - Desktop only */}
+            {/* Dark/Light Mode Toggle - desktop only */}
             <button
               onClick={toggleTheme}
               className="hidden md:flex text-white hover:text-purple-300 transition-colors duration-200 p-2 rounded-lg hover:bg-white/10"
@@ -146,7 +132,6 @@ export const Navigation = () => {
             >
               {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
-
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -156,7 +141,6 @@ export const Navigation = () => {
             </button>
           </div>
         </div>
-
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden bg-black/90 backdrop-blur-md rounded-lg mt-2 p-4">

@@ -2,8 +2,65 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "./LanguageProvider";
+
+const translations = {
+  en: {
+    header: "Get In Touch",
+    subtitle: "Let's discuss how I can help transform your business through strategic marketing and technology",
+    name: "Your Name",
+    email: "Your Email",
+    message: "Your Message",
+    send: "Send Message",
+    sent: "Message Sent!",
+    thanks: "Thank you for your message. I'll get back to you soon."
+  },
+  tr: {
+    header: "İletişime Geçin",
+    subtitle: "Stratejik pazarlama ve teknoloji ile işinizi nasıl dönüştürebileceğimizi konuşalım",
+    name: "Adınız",
+    email: "E-posta Adresiniz",
+    message: "Mesajınız",
+    send: "Mesajı Gönder",
+    sent: "Mesajınız Gönderildi!",
+    thanks: "Mesajınız için teşekkürler. En kısa sürede size geri döneceğim."
+  },
+  fr: {
+    header: "Contactez-moi",
+    subtitle: "Voyons ensemble comment transformer votre entreprise grâce au marketing et à la technologie",
+    name: "Votre Nom",
+    email: "Votre Email",
+    message: "Votre Message",
+    send: "Envoyer le Message",
+    sent: "Message envoyé !",
+    thanks: "Merci pour votre message. Je vous répondrai bientôt."
+  },
+  it: {
+    header: "Contattami",
+    subtitle: "Parliamo di come posso aiutarti a trasformare la tua azienda con marketing e tecnologia",
+    name: "Il Tuo Nome",
+    email: "La Tua Email",
+    message: "Il Tuo Messaggio",
+    send: "Invia Messaggio",
+    sent: "Messaggio Inviato!",
+    thanks: "Grazie per il messaggio. Ti ricontatterò presto."
+  },
+  nl: {
+    header: "Neem Contact Op",
+    subtitle: "Laten we bespreken hoe ik met strategie en technologie jouw bedrijf kan transformeren",
+    name: "Uw Naam",
+    email: "Uw E-mail",
+    message: "Uw Bericht",
+    send: "Bericht Versturen",
+    sent: "Bericht Verzonden!",
+    thanks: "Bedankt voor je bericht. Ik neem spoedig contact op."
+  }
+};
 
 export const Contact = () => {
+  const { language } = useLanguage();
+  const t = translations[language] || translations.en;
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,10 +70,9 @@ export const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
     toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon.",
+      title: t.sent,
+      description: t.thanks,
     });
     setFormData({ name: "", email: "", message: "" });
   };
@@ -48,10 +104,10 @@ export const Contact = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Touch</span>
+            {t.header.split(" ")[0]} <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">{t.header.split(" ").slice(1).join(" ")}</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Let's discuss how I can help transform your business through strategic marketing and technology
+            {t.subtitle}
           </p>
         </div>
 
@@ -69,7 +125,6 @@ export const Contact = () => {
                 <p className="text-gray-300">Click to send email</p>
               </div>
             </button>
-
             <button 
               onClick={handleTelegramClick}
               className="flex items-center space-x-4 w-full text-left hover:transform hover:scale-105 transition-all duration-200"
@@ -84,7 +139,6 @@ export const Contact = () => {
                 <p className="text-gray-300">Quick messaging</p>
               </div>
             </button>
-
             <button 
               onClick={handleWhatsAppClick}
               className="flex items-center space-x-4 w-full text-left hover:transform hover:scale-105 transition-all duration-200"
@@ -99,7 +153,6 @@ export const Contact = () => {
                 <p className="text-gray-300">Direct messaging</p>
               </div>
             </button>
-
             <div className="flex items-center space-x-4">
               <div className="bg-yellow-500 p-3 rounded-full">
                 <MapPin className="text-white" size={24} />
@@ -110,36 +163,33 @@ export const Contact = () => {
               </div>
             </div>
           </div>
-
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <input
                 type="text"
                 name="name"
-                placeholder="Your Name"
+                placeholder={t.name}
                 value={formData.name}
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-colors duration-200"
               />
             </div>
-
             <div>
               <input
                 type="email"
                 name="email"
-                placeholder="Your Email"
+                placeholder={t.email}
                 value={formData.email}
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-colors duration-200"
               />
             </div>
-
             <div>
               <textarea
                 name="message"
-                placeholder="Your Message"
+                placeholder={t.message}
                 rows={5}
                 value={formData.message}
                 onChange={handleChange}
@@ -147,13 +197,12 @@ export const Contact = () => {
                 className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-colors duration-200 resize-none"
               ></textarea>
             </div>
-
             <button
               type="submit"
               className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 px-6 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
             >
               <Send size={20} />
-              <span>Send Message</span>
+              <span>{t.send}</span>
             </button>
           </form>
         </div>

@@ -1,5 +1,18 @@
 
+import { useLanguage } from "./LanguageProvider";
+
+const translations = {
+  en: { expertise: "My Expertise", subtitle: "Comprehensive skills across digital marketing, development, and business automation" },
+  tr: { expertise: "Uzmanlık Alanlarım", subtitle: "Dijital pazarlama, yazılım geliştirme ve iş otomasyonunda kapsamlı yetkinlikler" },
+  fr: { expertise: "Mon Expertise", subtitle: "Compétences complètes en marketing digital, développement et automatisation d'entreprise" },
+  it: { expertise: "Le Mie Competenze", subtitle: "Competenze complete in marketing digitale, sviluppo e automazione dei processi" },
+  nl: { expertise: "Mijn Expertise", subtitle: "Uitgebreide vaardigheden in digitale marketing, ontwikkeling en bedrijfsautomatisering" }
+};
+
 export const Skills = () => {
+  const { language } = useLanguage();
+  const t = translations[language] || translations.en;
+
   const skillCategories = [
     {
       title: "Digital Marketing",
@@ -64,10 +77,10 @@ export const Skills = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Expertise</span>
+            {t.expertise.split(" ")[0]} <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">{t.expertise.split(" ").slice(1).join(" ")}</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Comprehensive skills across digital marketing, development, and business automation
+            {t.subtitle}
           </p>
         </div>
 

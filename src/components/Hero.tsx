@@ -1,8 +1,44 @@
 
-
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { useLanguage } from "./LanguageProvider";
+
+const translations = {
+  en: {
+    title: "Serhan Demirel",
+    role: "Digital Transformation Architect",
+    desc: "Architecting digital futures through strategic marketing, cutting-edge development, and intelligent automation. I transform businesses with data-driven solutions and innovative technology integration.",
+    explore: "Explore My Work"
+  },
+  tr: {
+    title: "Serhan Demirel",
+    role: "Dijital Dönüşüm Mimarı",
+    desc: "Stratejik pazarlama, yenilikçi yazılım geliştirme ve akıllı otomasyon ile dijital gelecekleri inşa ediyorum. Veri odaklı çözümler ve yenilikçi teknoloji entegrasyonu ile işletmeleri dönüştürüyorum.",
+    explore: "Çalışmalarımı Keşfet"
+  },
+  fr: {
+    title: "Serhan Demirel",
+    role: "Architecte de la Transformation Digitale",
+    desc: "J’orchestre l’avenir digital grâce à une stratégie marketing, un développement technologique de pointe et des solutions d’automatisation intelligente. Je transforme les entreprises avec des solutions axées sur la donnée et l’innovation.",
+    explore: "Voir Mes Projets"
+  },
+  it: {
+    title: "Serhan Demirel",
+    role: "Architetto della Trasformazione Digitale",
+    desc: "Progetto il futuro digitale con strategie di marketing, sviluppo avanzato e automazione intelligente. Trasformo le aziende con soluzioni guidate dai dati e integrazione tecnologica innovativa.",
+    explore: "Scopri i Miei Progetti"
+  },
+  nl: {
+    title: "Serhan Demirel",
+    role: "Digitale Transformatie Architect",
+    desc: "Ik vorm digitale toekomsten door strategische marketing, geavanceerde ontwikkeling en intelligente automatisering. Ik transformeer bedrijven met datagedreven oplossingen en innovatieve technologie-integratie.",
+    explore: "Bekijk Mijn Werk"
+  }
+};
 
 export const Hero = () => {
+  const { language } = useLanguage();
+  const t = translations[language] || translations.en;
+
   const scrollToAbout = () => {
     document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -41,16 +77,15 @@ export const Hero = () => {
         </div>
         
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in">
-          Serhan <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Demirel</span>
+          {t.title.split(" ")[0]} <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">{t.title.split(" ")[1]}</span>
         </h1>
         
         <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in animation-delay-300">
-          Digital Transformation Architect
+          {t.role}
         </p>
         
         <p className="text-lg text-gray-400 mb-10 max-w-2xl mx-auto animate-fade-in animation-delay-500">
-          Architecting digital futures through strategic marketing, cutting-edge development, and intelligent automation. 
-          I transform businesses with data-driven solutions and innovative technology integration.
+          {t.desc}
         </p>
 
         <div className="flex justify-center space-x-6 mb-12 animate-fade-in animation-delay-700">
@@ -99,11 +134,10 @@ export const Hero = () => {
           onClick={scrollToAbout}
           className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg animate-fade-in animation-delay-1000"
         >
-          Explore My Work
+          {t.explore}
           <ArrowDown className="ml-2" size={20} />
         </button>
       </div>
     </section>
   );
 };
-
