@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon, Globe } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -89,7 +88,6 @@ export const Navigation = () => {
           >
             <span className="text-white font-bold text-lg">Serhan Demirel</span>
           </button>
-          {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               <button
@@ -101,9 +99,7 @@ export const Navigation = () => {
               </button>
             ))}
           </div>
-          {/* Header controls */}
           <div className="flex items-center space-x-4">
-            {/* Language Switcher */}
             <Select value={language} onValueChange={setLanguage}>
               <SelectTrigger className="w-auto bg-transparent border-white/20 text-white hover:bg-white/10">
                 <SelectValue>
@@ -124,15 +120,23 @@ export const Navigation = () => {
                 ))}
               </SelectContent>
             </Select>
-            {/* Dark/Light Mode Toggle - desktop only */}
             <button
               onClick={toggleTheme}
-              className="hidden md:flex text-white hover:text-purple-300 transition-colors duration-200 p-2 rounded-lg hover:bg-white/10"
+              className={`hidden md:flex items-center border transition-all duration-200 p-2 rounded-lg
+                ${
+                  isDarkMode
+                    ? "bg-black/80 border-white/20 text-yellow-400 hover:bg-black/70"
+                    : "bg-white border-black/10 text-purple-700 hover:bg-white/80"
+                }
+              `}
               aria-label="Toggle theme"
             >
-              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+              {isDarkMode ? (
+                <Sun size={20} className="transition-all" />
+              ) : (
+                <Moon size={20} className="transition-all" />
+              )}
             </button>
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden text-white"
@@ -141,7 +145,6 @@ export const Navigation = () => {
             </button>
           </div>
         </div>
-        {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden bg-black/90 backdrop-blur-md rounded-lg mt-2 p-4">
             {navItems.map((item) => (
