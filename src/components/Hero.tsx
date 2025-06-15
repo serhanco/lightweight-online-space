@@ -1,4 +1,5 @@
 
+
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 
 export const Hero = () => {
@@ -35,7 +36,7 @@ export const Hero = () => {
           <img
             src="https://serhandemirel.com/img/SD-logo-75px-white-transparent.webp"
             alt="Serhan Demirel Logo"
-            className="w-32 h-32 mx-auto mb-6 animate-fade-in"
+            className="w-16 h-16 mx-auto mb-6 animate-fade-in"
           />
         </div>
         
@@ -105,3 +106,4 @@ export const Hero = () => {
     </section>
   );
 };
+
