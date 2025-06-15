@@ -127,11 +127,12 @@ export const Clients = () => {
               key={index}
               className="bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all duration-300 transform hover:scale-105 group"
             >
-              <div className="aspect-video bg-white rounded-lg mb-4 overflow-hidden">
+              <div className="aspect-video bg-white rounded-lg mb-4 overflow-hidden flex items-center justify-center">
                 <img
                   src={client.logo}
                   alt={client.name}
-                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                  className="w-full h-full object-contain transition-all duration-300 grayscale group-hover:grayscale-0"
+                  style={{ filter: undefined /* fallback for unsupported Tailwind grayscale class */ }}
                 />
               </div>
               <div className="space-y-2">
@@ -155,3 +156,4 @@ export const Clients = () => {
     </section>
   );
 };
+
