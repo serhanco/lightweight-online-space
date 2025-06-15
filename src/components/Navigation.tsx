@@ -15,7 +15,6 @@ export const Navigation = () => {
   }, []);
 
   const navItems = [
-    { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
@@ -30,13 +29,23 @@ export const Navigation = () => {
     setIsOpen(false);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setIsOpen(false);
+  };
+
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       scrolled ? "bg-black/20 backdrop-blur-md" : "bg-transparent"
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <div className="text-2xl font-bold text-white">Serhan Demirel</div>
+          <button
+            onClick={scrollToTop}
+            className="text-2xl font-bold text-white hover:text-purple-300 transition-colors duration-200"
+          >
+            Serhan Demirel
+          </button>
           
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">

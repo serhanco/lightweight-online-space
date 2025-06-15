@@ -1,7 +1,10 @@
 
 import { Calendar, ArrowRight, Eye, MessageSquare, Heart } from "lucide-react";
+import { useState } from "react";
 
 export const Showcase = () => {
+  const [activeFilter, setActiveFilter] = useState("All");
+
   const showcaseItems = [
     {
       title: "Digital Marketing ROI: 300% Growth Case Study",
@@ -67,6 +70,10 @@ export const Showcase = () => {
 
   const categories = ["All", "Case Study", "Industry Insights", "Tutorial", "Strategy"];
 
+  const filteredItems = activeFilter === "All" 
+    ? showcaseItems 
+    : showcaseItems.filter(item => item.category === activeFilter);
+
   return (
     <section id="showcase" className="py-20 px-4 bg-black/20">
       <div className="max-w-6xl mx-auto">
@@ -83,7 +90,12 @@ export const Showcase = () => {
             {categories.map((category) => (
               <button
                 key={category}
-                className="px-4 py-2 rounded-full text-sm transition-all duration-200 bg-white/10 text-gray-300 hover:bg-purple-500 hover:text-white"
+                onClick={() => setActiveFilter(category)}
+                className={`px-4 py-2 rounded-full text-sm transition-all duration-200 ${
+                  activeFilter === category
+                    ? "bg-purple-500 text-white"
+                    : "bg-white/10 text-gray-300 hover:bg-purple-500 hover:text-white"
+                }`}
               >
                 {category}
               </button>
@@ -93,7 +105,7 @@ export const Showcase = () => {
 
         {/* Showcase Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {showcaseItems.map((item, index) => (
+          {filteredItems.map((item, index) => (
             <article
               key={index}
               className="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 transform hover:scale-105 group cursor-pointer"
