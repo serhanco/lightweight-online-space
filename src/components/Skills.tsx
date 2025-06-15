@@ -79,7 +79,7 @@ export const Skills = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white dark:text-white text-gray-900 mb-6">
             {t.expertise.split(" ")[0]} <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">{t.expertise.split(" ").slice(1).join(" ")}</span>
           </h2>
-          <p className="text-xl text-gray-300 dark:text-gray-300 text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 dark:text-gray-300 text-gray-700 max-w-3xl mx-auto">
             {t.subtitle}
           </p>
         </div>
@@ -98,7 +98,7 @@ export const Skills = () => {
                     key={skillIndex}
                     className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 dark:from-purple-500/10 dark:to-pink-500/10 from-purple-500/20 to-pink-500/20 border border-purple-500/20 dark:border-purple-500/20 border-purple-500/30 rounded-lg px-3 py-2 text-center hover:from-purple-500/20 hover:to-pink-500/20 dark:hover:from-purple-500/20 dark:hover:to-pink-500/20 hover:from-purple-500/30 hover:to-pink-500/30 transition-all duration-200"
                   >
-                    <span className="text-gray-300 dark:text-gray-300 text-gray-700 text-sm font-medium">{skill}</span>
+                    <span className="text-gray-300 dark:text-gray-300 text-gray-800 text-sm font-medium">{skill}</span>
                   </div>
                 ))}
               </div>

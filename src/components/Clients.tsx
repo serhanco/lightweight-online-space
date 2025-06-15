@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Flag } from "lucide-react";
 
@@ -64,17 +65,17 @@ export const Clients = () => {
     <section id="clients" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-white dark:text-white text-gray-900 mb-6">
             Trusted by <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Leading Brands</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-gray-300 dark:text-gray-300 text-gray-700 max-w-3xl mx-auto mb-8">
             I've had the privilege of partnering with amazing companies across the globe to bring their visions to life
           </p>
 
           {/* Filters */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex flex-wrap gap-2">
-              <span className="text-gray-400 text-sm">Filter by industry:</span>
+              <span className="text-gray-400 dark:text-gray-400 text-gray-600 text-sm">Filter by industry:</span>
               {industries.map((industry) => (
                 <button
                   key={industry}
@@ -82,7 +83,7 @@ export const Clients = () => {
                   className={`px-3 py-1 rounded-full text-xs transition-all duration-200 ${
                     selectedIndustry === industry
                       ? "bg-purple-500 text-white"
-                      : "bg-white/10 text-gray-300 hover:bg-white/20"
+                      : "bg-white/10 dark:bg-white/10 bg-gray-200 text-gray-300 dark:text-gray-300 text-gray-700 hover:bg-white/20 dark:hover:bg-white/20 hover:bg-gray-300"
                   }`}
                 >
                   {industry === "all" ? "All Industries" : industry}
@@ -91,7 +92,7 @@ export const Clients = () => {
             </div>
             
             <div className="flex flex-wrap gap-2">
-              <span className="text-gray-400 text-sm">Filter by region:</span>
+              <span className="text-gray-400 dark:text-gray-400 text-gray-600 text-sm">Filter by region:</span>
               {countries.map((country) => (
                 <button
                   key={country}
@@ -99,7 +100,7 @@ export const Clients = () => {
                   className={`px-3 py-1 rounded-full text-xs transition-all duration-200 flex items-center gap-1 ${
                     selectedCountry === country
                       ? "bg-purple-500 text-white"
-                      : "bg-white/10 text-gray-300 hover:bg-white/20"
+                      : "bg-white/10 dark:bg-white/10 bg-gray-200 text-gray-300 dark:text-gray-300 text-gray-700 hover:bg-white/20 dark:hover:bg-white/20 hover:bg-gray-300"
                   }`}
                 >
                   {country === "all" ? (
@@ -124,7 +125,7 @@ export const Clients = () => {
           {filteredClients.map((client, index) => (
             <div
               key={index}
-              className="bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all duration-300 transform hover:scale-105 group"
+              className="bg-white/5 dark:bg-white/5 bg-gray-100/80 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 dark:hover:bg-white/10 hover:bg-gray-200/80 transition-all duration-300 transform hover:scale-105 group"
             >
               <div className="aspect-video bg-white rounded-lg mb-4 overflow-hidden flex items-center justify-center">
                 <img
@@ -135,10 +136,10 @@ export const Clients = () => {
                 />
               </div>
               <div className="space-y-2">
-                <h3 className="font-bold text-white text-center">{client.name}</h3>
+                <h3 className="font-bold text-white dark:text-white text-gray-900 text-center">{client.name}</h3>
                 <div className="flex items-center justify-center gap-2">
-                  <span className="text-purple-300 text-xs">{client.industry}</span>
-                  <span className="text-gray-400">•</span>
+                  <span className="text-purple-300 dark:text-purple-300 text-purple-600 text-xs">{client.industry}</span>
+                  <span className="text-gray-400 dark:text-gray-400 text-gray-600">•</span>
                   <span className="text-sm">{client.countryFlag}</span>
                 </div>
               </div>
@@ -148,7 +149,7 @@ export const Clients = () => {
 
         {filteredClients.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-400 text-lg">No clients match the selected filters</p>
+            <p className="text-gray-400 dark:text-gray-400 text-gray-600 text-lg">No clients match the selected filters</p>
           </div>
         )}
       </div>
