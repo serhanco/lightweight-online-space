@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 import { Flag } from "lucide-react";
 
 export const Clients = () => {
-  const [selectedType, setSelectedType] = useState("all");
+  const [selectedIndustry, setSelectedIndustry] = useState("all");
   const [selectedCountry, setSelectedCountry] = useState("all");
 
   // Sample client data - you can replace with your actual clients
@@ -11,54 +10,54 @@ export const Clients = () => {
     {
       name: "TechCorp",
       logo: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=200&h=100&fit=crop",
-      type: "Web Development",
+      industry: "Technology",
       country: "US",
       countryFlag: "🇺🇸"
     },
     {
       name: "DesignStudio",
       logo: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=200&h=100&fit=crop",
-      type: "UI/UX Design",
+      industry: "Architecture",
       country: "UK",
       countryFlag: "🇬🇧"
     },
     {
       name: "StartupLab",
       logo: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=200&h=100&fit=crop",
-      type: "Full Stack",
+      industry: "Healthcare",
       country: "CA",
       countryFlag: "🇨🇦"
     },
     {
       name: "EcommercePlus",
       logo: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=200&h=100&fit=crop",
-      type: "E-commerce",
+      industry: "FMCG",
       country: "US",
       countryFlag: "🇺🇸"
     },
     {
       name: "MobileFirst",
       logo: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=200&h=100&fit=crop",
-      type: "Mobile App",
+      industry: "Tourism",
       country: "DE",
       countryFlag: "🇩🇪"
     },
     {
       name: "DataViz Co",
       logo: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=200&h=100&fit=crop",
-      type: "Web Development",
+      industry: "Finance",
       country: "FR",
       countryFlag: "🇫🇷"
     }
   ];
 
-  const projectTypes = ["all", ...new Set(clients.map(client => client.type))];
+  const industries = ["all", ...new Set(clients.map(client => client.industry))];
   const countries = ["all", ...new Set(clients.map(client => client.country))];
 
   const filteredClients = clients.filter(client => {
-    const typeMatch = selectedType === "all" || client.type === selectedType;
+    const industryMatch = selectedIndustry === "all" || client.industry === selectedIndustry;
     const countryMatch = selectedCountry === "all" || client.country === selectedCountry;
-    return typeMatch && countryMatch;
+    return industryMatch && countryMatch;
   });
 
   return (
@@ -75,18 +74,18 @@ export const Clients = () => {
           {/* Filters */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex flex-wrap gap-2">
-              <span className="text-gray-400 text-sm">Filter by type:</span>
-              {projectTypes.map((type) => (
+              <span className="text-gray-400 text-sm">Filter by industry:</span>
+              {industries.map((industry) => (
                 <button
-                  key={type}
-                  onClick={() => setSelectedType(type)}
+                  key={industry}
+                  onClick={() => setSelectedIndustry(industry)}
                   className={`px-3 py-1 rounded-full text-xs transition-all duration-200 ${
-                    selectedType === type
+                    selectedIndustry === industry
                       ? "bg-purple-500 text-white"
                       : "bg-white/10 text-gray-300 hover:bg-white/20"
                   }`}
                 >
-                  {type === "all" ? "All Projects" : type}
+                  {industry === "all" ? "All Industries" : industry}
                 </button>
               ))}
             </div>
@@ -138,7 +137,7 @@ export const Clients = () => {
               <div className="space-y-2">
                 <h3 className="font-bold text-white text-center">{client.name}</h3>
                 <div className="flex items-center justify-center gap-2">
-                  <span className="text-purple-300 text-xs">{client.type}</span>
+                  <span className="text-purple-300 text-xs">{client.industry}</span>
                   <span className="text-gray-400">•</span>
                   <span className="text-sm">{client.countryFlag}</span>
                 </div>
@@ -156,4 +155,3 @@ export const Clients = () => {
     </section>
   );
 };
-
